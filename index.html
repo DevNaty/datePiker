@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="js/cargarModal.js"></script>
+    <script src="js/abrirModal.js"></script>
+    <script src="js/datepickers.js"></script>
+    <script src="js/registro.js"></script>
+ 
+ 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="libs/css/bootstrap-datepicker.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Modal Datepicker</h1>
+        <button type="button" class="btn btn-success" onclick="abrirModal()">Hace tu reserva!</button>
+    </div>
+    <div class="modal fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title" id="exampleModalLabel">Reserva</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input id="idCliente" type="text" style="display: none;" readonly>
+                    <div class="row g-2">
+                        <div class="col-sm-6">
+                            <label for="txtnombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="txtnombre" placeholder="Juan">
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="txtapellido" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" id="txtapellido" placeholder="Perez">
+                        </div>
+                        <div class="col-sm-6">
+                            
+                            <label for="txtmail" class="form-label">Correo</label>
+                            <input type="text" class="form-control" id="txtmail" placeholder="name@example.com">
+                            
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="txttelefono" class="form-label">Telefono</label>
+                            <input type="number" class="form-control" id="txttelefono" placeholder="0101010101">
+                        </div>
+                            <div class="col-sm-6">
+                                <label for="cbocabaña" class="form-label">Cabañas</label>
+                                <select id="idCabaña" class="form-select" onchange="obtenerPrecioCabaña()"></select> 
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="precio" class="form-label">Precio por Día</label>
+                                <input type="text" class="form-control" id="txtprecio" readonly>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="input-group date">
+                                    <input type="text" class="form-control" id="desde">
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-th"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="input-group date">
+                                    <input type="text" class="form-control" id="hasta">
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-th"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="precio" class="form-label">Precio Total</label>
+                                <input type="text" class="form-control" id="txtprecioTotal" readonly>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-12">
+                                    <div id="mensajeError" class="alert alert-danger" role="alert">
+                                        A simple danger alert—check it out!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    <div class="modal-footer">
+                        <button id="btnCerrarModal" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="calcularPrecioTotal()">Cerrar</button>
+                        <button type="button" class="btn btn-primary" onclick="VerificarDatos()">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!--Obligatorio que la libreria datepicker este en el footer justo despues de los js de bootstrap para no causar conflicto-->
+    <script src="libs/js/bootstrap-datepicker.min.js"></script>
+    <script src="libs/locales/bootstrap-datepicker.es.min.js"></script>
+</body>
+</html>
+
+
